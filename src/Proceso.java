@@ -23,7 +23,7 @@ public class Proceso implements Comparable<Proceso> {
 
     @Override
     public int compareTo(Proceso otro) {
-        return Integer.compare(valorPrioridad, otro.valorPrioridad);
+        return Integer.compare(otro.valorPrioridad, valorPrioridad);
     }
 }
 

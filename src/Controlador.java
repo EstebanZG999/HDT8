@@ -28,19 +28,49 @@ public class Controlador {
             System.out.println("4. Salir");
             RespI = sc.nextInt();
             if (RespI == 1) {
-
+                Insertar();
             }
             if (RespI == 2) {
+                if(!pq.isEmpty()){
+                    Proceso proceso = pq.poll();
+                    System.out.println("Nombre del Proceso: " + proceso.getNombreProceso()
+                            + ", Nombre del Usuario: " + proceso.getNombreUsuario()
+                            + ", Valor de Prioridad: " + proceso.getValorPrioridad());
+                }
+                if()
+
+
 
             }
             if (RespI == 3) {
+                while (!pq.isEmpty()) {
+                    Proceso proceso = pq.poll();
+                    System.out.println("Nombre del Proceso: " + proceso.getNombreProceso()
+                            + ", Nombre del Usuario: " + proceso.getNombreUsuario()
+                            + ", Valor de Prioridad: " + proceso.getValorPrioridad());
+                }
 
             }
             if (RespI == 4) {
-
+                System.out.println("Saliendo...");
+                break;
             }
         }
     }
-    
+    public void Insertar(){
+        String NombrePro = "";
+        String NombreUsu = "";
+        int Prioridad = 0;
+        System.out.println("Ingrese el nombre del proceso: ");
+        sc.nextLine();
+        NombrePro = sc.nextLine();
+        System.out.println("Ingrese el nombre del usuario del proceso ");
+        NombreUsu = sc.nextLine();
+        System.out.println("Ingrese el numero de prioridad (0 - 39) :");
+        Prioridad = sc.nextInt();
+        pq.add(new Proceso(NombrePro,NombreUsu,Prioridad+100));
+        System.out.println("Se ha agregado correctamente el proceso");
+    }
+
 }
 
