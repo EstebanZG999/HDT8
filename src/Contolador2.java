@@ -1,5 +1,6 @@
 import java.util.*;
-public class Controlador {
+
+public class Contolador2 {
     ArrayList<String> copia = new ArrayList<String>();
     Scanner sc = new Scanner(System.in);
     boolean loop = true;
@@ -7,17 +8,15 @@ public class Controlador {
     String RespS = "";
     Integer RespI = 0;
     String Dir = "C:\\Users\\Usuario\\Desktop\\Universidad\\Tercer Semestre\\Datos Compu\\HDT-7\\HDT8\\src\\Procesos.txt";
-    PriorityQueue<Proceso> pq = new PriorityQueue<>();
+    VectorHeap<Proceso2> pq = new VectorHeap<>();
 
-
-
-    public void iniciar() {
+    public void Iniciar2(){
         Reader read = new Reader();
         read.Leer(Dir);
         copia = read.lineas;
         for(int i = 0;i <= copia.size()-1;i++){
             String[] result = read.lineas.get(i).split(",");
-            pq.add(new Proceso(result[0],result[1],Integer.parseInt(result[2])+120));
+            pq.add(new Proceso2(result[0],result[1],Integer.parseInt(result[2])+120));
         }
 
         while (loop) {
@@ -32,10 +31,10 @@ public class Controlador {
             }
             if (RespI == 2) {
                 if(!pq.isEmpty()){
-                    Proceso proceso = pq.poll();
-                    System.out.println("Nombre del Proceso: " + proceso.getNombreProceso()
-                            + ", Nombre del Usuario: " + proceso.getNombreUsuario()
-                            + ", Valor de Prioridad: " + proceso.getValorPrioridad());
+                    Proceso2 proceso = pq.remove();
+                    System.out.println("Nombre del Proceso: " + proceso.getNombreDeProceso()
+                            + ", Nombre del Usuario: " + proceso.getNombreDeUsuario()
+                            + ", Valor de Prioridad: " + proceso.getNumeroDePrioridad());
 
                     System.out.println("");
                     System.out.println("Se ha solucionado el proceso de manera exitosa");
@@ -69,25 +68,20 @@ public class Controlador {
         NombreUsu = sc.nextLine();
         System.out.println("Ingrese el numero de prioridad (0 - 39) :");
         Prioridad = sc.nextInt();
-        pq.add(new Proceso(NombrePro,NombreUsu,Prioridad+120));
+        pq.add(new Proceso2(NombrePro,NombreUsu,Prioridad+120));
         System.out.println("Se ha agregado correctamente el proceso");
     }
     public void Mostrar(){
-        PriorityQueue<Proceso> lol = new PriorityQueue<Proceso>(pq);
-
+        VectorHeap<Proceso2> lol = new VectorHeap<Proceso2>(pq.data);
         while (!lol.isEmpty()) {
-            Proceso proceso = lol.poll();
-            System.out.println("Nombre del Proceso: " + proceso.getNombreProceso()
-                    + ", Nombre del Usuario: " + proceso.getNombreUsuario()
-                    + ", Valor de Prioridad: " + proceso.getValorPrioridad());
+            Proceso2 proceso = lol.remove();
+            System.out.println("Nombre del Proceso: " + proceso.getNombreDeProceso()
+                    + ", Nombre del Usuario: " + proceso.getNombreDeUsuario()
+                    + ", Valor de Prioridad: " + proceso.getNumeroDePrioridad());
         }
         if(pq.isEmpty()){
             System.out.println("ERORR: No hay procesos que mostrar");
         }
-
-
-
     }
 
 }
-

@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Controlador control = new Controlador();
-        control.iniciar();
+        MasterControler hola = new MasterControler();
+        hola.Inicio();
 
     }
 }
