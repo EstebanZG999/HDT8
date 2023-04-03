@@ -1,12 +1,30 @@
 import java.util.*;
 
+/**
+ * This class implements a priority queue using a vector heap data structure.
+ * It implements the Prioridad interface.
+ *
+ * @param <E> the type of elements in the priority queue
+ */
 public class VectorHeap<E extends Comparable<E>> implements Prioridad<E> {
-    protected Vector<E> data; // the data, kept in heap order
 
+    /**
+     * The data, kept in heap order.
+     */
+    protected Vector<E> data;
+
+    /**
+     * Constructs an empty priority queue.
+     */
     public VectorHeap() {
         data = new Vector<E>();
     }
 
+    /**
+     * Constructs a priority queue from a vector.
+     *
+     * @param v the vector whose elements to add to the priority queue
+     */
     public VectorHeap(Vector<E> v) {
         int i;
         data = new Vector<E>(v.size()); // we know ultimate size
@@ -15,18 +33,42 @@ public class VectorHeap<E extends Comparable<E>> implements Prioridad<E> {
         }
     }
 
+    /**
+     * Returns the index of the parent of the given index.
+     *
+     * @param i the index whose parent to return
+     * @return the index of the parent of the given index
+     */
     protected static int parent(int i) {
         return (i - 1) / 2;
     }
 
+    /**
+     * Returns the index of the left child of the given index.
+     *
+     * @param i the index whose left child to return
+     * @return the index of the left child of the given index
+     */
     protected static int left(int i) {
         return 2 * i + 1;
     }
 
+    /**
+     * Returns the index of the right child of the given index.
+     *
+     * @param i the index whose right child to return
+     * @return the index of the right child of the given index
+     */
     protected static int right(int i) {
         return 2 * (i + 1);
     }
 
+    /**
+     * Moves the element at the given leaf index up the heap to its
+     * correct position.
+     *
+     * @param leaf the index of the leaf to percolate up
+     */
     protected void percolateUp(int leaf) {
         int parent = parent(leaf);
         E value = data.get(leaf);
@@ -38,11 +80,22 @@ public class VectorHeap<E extends Comparable<E>> implements Prioridad<E> {
         data.set(leaf, value);
     }
 
+    /**
+     * Adds the given element to the priority queue.
+     *
+     * @param value the element to add to the priority queue
+     */
     public void add(E value) {
         data.add(value);
         percolateUp(data.size() - 1);
     }
 
+    /**
+     * Moves the element at the given root index down the heap to its
+     * correct position.
+     *
+     * @param root the index of the root to push down
+     */
     protected void pushDownRoot(int root) {
         int heapSize = data.size();
         E value = data.get(root);

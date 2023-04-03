@@ -7,9 +7,12 @@ public class Contolador2 {
 
     String RespS = "";
     Integer RespI = 0;
-    String Dir = "C:\\Users\\Usuario\\Desktop\\Universidad\\Tercer Semestre\\Datos Compu\\HDT-7\\HDT8\\src\\Procesos.txt";
+    String Dir = "src/Procesos.txt";
     VectorHeap<Proceso2> pq = new VectorHeap<>();
 
+    /**
+     * Reads the list of processes from a file, and adds them to the priority queue.
+     */
     public void Iniciar2(){
         Reader read = new Reader();
         read.Leer(Dir);
@@ -57,6 +60,10 @@ public class Contolador2 {
             }
         }
     }
+
+    /**
+     * Adds a new process to the priority queue based on user input.
+     */
     public void Insertar(){
         String NombrePro = "";
         String NombreUsu = "";
@@ -71,6 +78,10 @@ public class Contolador2 {
         pq.add(new Proceso2(NombrePro,NombreUsu,Prioridad+120));
         System.out.println("Se ha agregado correctamente el proceso");
     }
+
+    /**
+     * Prints the process, user and priority of each line of the .txt
+     */
     public void Mostrar(){
         VectorHeap<Proceso2> lol = new VectorHeap<Proceso2>(pq.data);
         while (!lol.isEmpty()) {

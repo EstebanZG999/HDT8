@@ -4,6 +4,11 @@ public class MasterControler {
     int Eleccion = 0;
 
     Scanner sc = new Scanner(System.in);
+
+    /**
+     * Displays the available PriorityQueue options and prompts the user to select one.
+     * Depending on the user's input, initializes the corresponding Controller.
+     */
     public void Inicio(){
         System.out.println("Elija el tipo de PriorityQueue que desea: 1. VectorHeap, 2. Java Collection");
         Eleccion = sc.nextInt();
@@ -16,8 +21,5 @@ public class MasterControler {
             Controlador control = new Controlador();
             control.iniciar();
         }
-
-
     }
-
 }

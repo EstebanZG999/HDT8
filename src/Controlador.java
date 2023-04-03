@@ -6,11 +6,13 @@ public class Controlador {
 
     String RespS = "";
     Integer RespI = 0;
-    String Dir = "C:\\Users\\Usuario\\Desktop\\Universidad\\Tercer Semestre\\Datos Compu\\HDT-7\\HDT8\\src\\Procesos.txt";
+    String Dir = "src/Procesos.txt";
     PriorityQueue<Proceso> pq = new PriorityQueue<>();
 
 
-
+    /**
+     * Reads the list of processes from a file, and adds them to the priority queue.
+     */
     public void iniciar() {
         Reader read = new Reader();
         read.Leer(Dir);
@@ -58,6 +60,9 @@ public class Controlador {
             }
         }
     }
+    /**
+     * Adds a new process to the priority queue based on user input.
+     */
     public void Insertar(){
         String NombrePro = "";
         String NombreUsu = "";
@@ -72,6 +77,10 @@ public class Controlador {
         pq.add(new Proceso(NombrePro,NombreUsu,Prioridad+120));
         System.out.println("Se ha agregado correctamente el proceso");
     }
+
+    /**
+     * Prints the process, user and priority of each line of the .txt
+     */
     public void Mostrar(){
         PriorityQueue<Proceso> lol = new PriorityQueue<Proceso>(pq);
 
